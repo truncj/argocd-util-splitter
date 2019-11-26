@@ -39,7 +39,6 @@ func main() {
 
 		for scanner.Scan() {
 			line := scanner.Text()
-			lines = append(lines, line)
 
 			if kind == nil {
 				kind = reKind.FindStringSubmatch(line)
@@ -50,10 +49,9 @@ func main() {
 			}
 		}
 
-		text := strings.Join(lines, "\n")
 		path := filepath.Join(*dst, fmt.Sprintf("%s-%s.yaml", name[1], kind[1]))
 
-		err := ioutil.WriteFile(path, []byte(text), 0644)
+		err := ioutil.WriteFile(path, []byte(manifest), 0644)
 		if err != nil {
 			fmt.Println("Unable to write file -", err)
 			os.Exit(1)
