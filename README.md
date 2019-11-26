@@ -2,7 +2,17 @@
 A utility to split up the superyaml that ArgoCD creates as a backup into individual manifests
 
 ### Build
-`go build -o argocd-util-splitter`
+`go build`
+
+### Flags
+
+```
+Usage of ./argocd-util-splitter:
+  -dst string
+        output directory (default "/tmp/")
+  -src string
+        path of argocd backup yaml (default "/home/backup.yaml")
+```
 
 ### Run
 `./argocd-util-splitter -src=/home/backup.yaml -dst=/tmp`
